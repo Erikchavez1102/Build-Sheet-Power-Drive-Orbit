@@ -188,4 +188,83 @@ select {
     }
 }
 
-/* Comandos de Git (no son estilos CSS, pero se incluyen aquí como referencia) */
+/* Media query para pantallas de tamaño medio (como tabletas) */
+@media (max-width: 800px) {
+    .main-layout {
+        display: flex;
+        flex-direction: column !important;
+        gap: 0 !important;
+        align-items: stretch !important;
+    }
+    .container {
+        max-width: 98vw;
+        width: 98vw;
+        margin: 0 auto 28px auto !important;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+    .header-row {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+    .slb-logo {
+        height: 38px;
+        max-width: 80vw;
+        width: auto;
+        margin-bottom: 8px;
+    }
+    h1 {
+        font-size: 1.1em;
+        text-align: center;
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+        word-break: break-word;
+    }
+    .form-section {
+        padding: 12px;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 10px;
+    }
+    .form-group {
+        margin-right: 0;
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    input[type="text"],
+    input[type="date"],
+    select {
+        width: 100%;
+        min-width: 0;
+        font-size: 1em;
+    }
+    .camera-btn {
+        font-size: 1em;
+        padding: 10px 12px;
+        border-radius: 7px;
+        margin-bottom: 14px;
+        gap: 6px;
+        width: 100%;
+        justify-content: center;
+    }
+    /* Espacio claro entre los containers apilados */
+    .container + .container {
+        margin-top: 24px !important;
+    }
+}
+
+.container.adicional {
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+.form-actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
