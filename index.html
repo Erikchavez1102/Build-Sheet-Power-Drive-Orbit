@@ -9,113 +9,107 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div class="container">
-        <h1>POWER DRIVE ORBIT BUILD SHEET</h1>
-        <button class="camera-btn" onclick="document.getElementById('photo-input').click()">
-            <i class="fa-solid fa-camera"></i> Tomar Foto
-        </button>
-        <input type="file" id="photo-input" accept="image/*" capture="environment" style="display:none">
-
-        <form id="build-sheet-form">
-            <div class="form-section">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="technician-name">Technician Name:</label>
-                        <input type="text" id="technician-name" name="technician-name">
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Date:</label>
-                        <input type="date" id="date" name="date">
-                    </div>
-                    <div class="form-group">
-                        <label for="job">Job:</label>
-                        <input type="text" id="job" name="job">
-                    </div>
+    <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 40px;">
+        <!-- Contenedor principal a la izquierda -->
+        <div style="flex: 1 1 0;">
+            <div class="container">
+                <div class="header-row">
+                    <img src="image/SLB_Logo_2022.svg.png" alt="SLB Logo" class="slb-logo">
+                    <h1>POWER DRIVE ORBIT BUILD SHEET</h1>
                 </div>
+                <button class="camera-btn" onclick="document.getElementById('photo-input').click()">
+                    <i class="fa-solid fa-camera"></i> Tomar Foto
+                </button>
+                <input type="file" id="photo-input" accept="image/*" capture="environment" style="display:none">
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="bias-unit-type">Type Bias Unit:</label>
-                        <select id="bias-unit-type" name="bias-unit-type">
-                            <option value="">Seleccione una opción</option>
-                            <option value="PDORB4">PDORB4</option>
-                            <option value="PDORB6">PDORB6</option>
-                            <option value="PDORB8">PDORB8</option>
-                            <option value="PDORB12">PDORB12</option>
-                        </select>
+                <form id="build-sheet-form">
+                    <div class="form-section">
+                        <!-- Ejemplo de fila de formulario -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="technician-name">Technician Name:</label>
+                                <input type="text" id="technician-name" name="technician-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date:</label>
+                                <input type="date" id="date" name="date">
+                            </div>
+                            <div class="form-group">
+                                <label for="job">Job:</label>
+                                <input type="text" id="job" name="job">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bias-unit-type">Type Bias Unit:</label>
+                                <select id="bias-unit-type" name="bias-unit-type">
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="PDORB4">PDORB4</option>
+                                    <option value="PDORB6">PDORB6</option>
+                                    <option value="PDORB8">PDORB8</option>
+                                    <option value="PDORB12">PDORB12</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="bias-unit-section">Bias Unit Section:</label>
+                                <select id="bias-unit-section" name="bias-unit-section">
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="6 in">6 in</option>
+                                    <option value="6 1/8 in">6 1/8 in</option>
+                                    <option value="8 1/2 in">8 1/2 in</option>
+                                    <option value="8 3/4 in">8 3/4 in</option>
+                                    <option value="10 5/8 in">10 5/8 in</option>
+                                    <option value="12 1/2 in">12 1/2 in</option>
+                                    <option value="14 in">14 in</option>
+                                    <option value="16 in">16 in</option>
+                                    <option value="17 in">17 in</option>
+                                    <option value="21 in">21 in</option>
+                                    <option value="26 in">26 in</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bias-unit-sn">Bias Unit SN:</label>
+                                <input type="text" id="bias-unit-sn" name="bias-unit-sn">
+                            </div>
+                            <div class="form-group">
+                                <label for="bias-unit-measure">Bias Unit Meassure:</label>
+                                <input type="text" id="bias-unit-measure" name="bias-unit-measure">
+                            </div>
+                            <div class="form-group">
+                                <label for="bias-unit-grooves">Bias Unit # Grooves:</label>
+                                <select id="bias-unit-grooves" name="bias-unit-grooves">
+                                    <option value="">Seleccione una opción</option>
+                                    <option value="0 groove">0 groove</option>
+                                    <option value="1 groove">1 groove</option>
+                                    <option value="2 groove">2 groove</option>
+                                    <option value="3 groove">3 groove</option>
+                                    <option value="4 groove">4 groove</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Puedes agregar más filas y campos aquí según tus necesidades -->
                     </div>
-                    <div class="form-group">
-                        <label for="bias-unit-section">Bias Unit Section:</label>
-                        <select id="bias-unit-section" name="bias-unit-section">
-                            <option value="">Seleccione una opción</option>
-                            <option value="6 in">6 in</option>
-                            <option value="6 1/8 in">6 1/8 in</option>
-                            <option value="8 1/2 in">8 1/2 in</option>
-                            <option value="8 3/4 in">8 3/4 in</option>
-                            <option value="10 5/8 in">10 5/8 in</option>
-                            <option value="12 1/2 in">12 1/2 in</option>
-                            <option value="14 in">14 in</option>
-                            <option value="16 in">16 in</option>
-                            <option value="17 in">17 in</option>
-                            <option value="21 in">21 in</option>
-                            <option value="26 in">26 in</option>
-                        </select>
+                    <div style="margin-top: 24px; display: flex; gap: 16px; justify-content: center;">
+                        <button type="reset" class="camera-btn" style="background:#dc3545;">
+                            <i class="fa-solid fa-eraser"></i> Reset
+                        </button>
+                        <button type="button" class="camera-btn" style="background:#28a745;" onclick="window.print();">
+                            <i class="fa-solid fa-file-pdf"></i> Imprimir PDF
+                        </button>
                     </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="bias-unit-sn">Bias Unit SN:</label>
-                        <input type="text" id="bias-unit-sn" name="bias-unit-sn">
-                    </div>
-                    <div class="form-group">
-                        <label for="bias-unit-measure">Bias Unit Meassure:</label>
-                        <input type="text" id="bias-unit-measure" name="bias-unit-measure">
-                    </div>
-                    <div class="form-group">
-                        <label for="bias-unit-grooves">Bias Unit # Grooves:</label>
-                        <select id="bias-unit-grooves" name="bias-unit-grooves">
-                            <option value="">Seleccione una opción</option>
-                            <option value="0 groove">0 groove</option>
-                            <option value="1 groove">1 groove</option>
-                            <option value="2 groove">2 groove</option>
-                            <option value="3 groove">3 groove</option>
-                            <option value="4 groove">4 groove</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="extension-sn">Extension Sub SN:</label>
-                        <input type="text" id="extension-sn" name="extension-sn">
-                    </div>
-                    <div class="form-group">
-                        <label for="extension-measure">Extension Sub Meassure:</label>
-                        <input type="text" id="extension-measure" name="extension-measure">
-                    </div>
-                    <div class="form-group">
-                        <label for="extension-grooves">Extension Sub # Grooves:</label>
-                        <select id="extension-grooves" name="extension-grooves">
-                            <option value="">Seleccione una opción</option>
-                            <option value="0 groove">0 groove</option>
-                            <option value="1 groove">1 groove</option>
-                            <option value="2 groove">2 groove</option>
-                            <option value="3 groove">3 groove</option>
-                            <option value="4 groove">4 groove</option>
-                        </select>
-                    </div>
+                </form>
+            </div>
+            <!-- Adicional #1 debajo del principal, con espacio -->
+            <div class="container" style="margin-top: 48px; margin-bottom: 48px;">
+                <div class="form-section">
+                    <h2>Adicional #1</h2>
+                    <!-- Agrega aquí los campos o contenido que necesites -->
                 </div>
             </div>
-            <div style="margin-top: 24px; display: flex; gap: 16px; justify-content: center;">
-                <button type="reset" class="camera-btn" style="background:#dc3545;"><i class="fa-solid fa-eraser"></i> Reset</button>
-                <button type="button" class="camera-btn" style="background:#28a745;" onclick="window.print();"><i class="fa-solid fa-file-pdf"></i> Imprimir PDF</button>
-            </div>
-        </form>
+        </div>
     </div>
-
     <script src="script.js"></script>
-
 </body>
 </html>
