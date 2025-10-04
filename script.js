@@ -18,4 +18,31 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Asigna la fecha formateada al valor del campo de entrada de fecha
     dateInput.value = formattedDate;
+
+
+    const gapInput = document.getElementById('gap');
+    const typeBiasUnit = document.getElementById('bias-unit-type');
+
+    function validateGap() {
+        const gapValue = parseFloat(gapInput.value);
+        const type = typeBiasUnit.value;
+        let inRange = false;
+
+        if (type === 'PDORB4') {
+            inRange = gapValue >= 32.10 && gapValue <= 32.50;
+        } else if (['PDORB6', 'PDORB8', 'PDORB12'].includes(type)) {
+            inRange = gapValue >= 40.10 && gapValue <= 40.50;
+        }
+
+        if (gapInput.value === '') {
+            gapInput.style.backgroundColor = '';
+        } else if (inRange) {
+            gapInput.style.backgroundColor = 'rgba(0, 255, 0, 0.2)';
+        } else {
+            gapInput.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
+        }
+    }
+
+    gapInput.addEventListener('input', validateGap);
+    typeBiasUnit.addEventListener('change', validateGap);
 });
