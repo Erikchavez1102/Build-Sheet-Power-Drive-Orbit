@@ -2,7 +2,7 @@
 body {
     font-family: Arial, sans-serif; /* Define la fuente */
     background-color: #f4f4f4; /* Color de fondo */
-    background-image: url('image/powerdrive-x6-combo.jpg'); /* Cambia la ruta por la de tu imagen */
+    background-image: url('image/POWERDRIVEORBIT.png'); /* Cambia la ruta por la de tu imagen */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -76,6 +76,187 @@ h1 {
     border: 2px solid #000; /* Borde negro alrededor de la sección */
     padding: 20px; /* Espaciado interno */
     margin-top: 20px; /* Margen superior */
+}
+
+/* Subsecciones internas dentro de una sección principal */
+.subsection {
+    border: 1px solid #666; /* Borde gris más sutil para subsecciones */
+    padding: 15px; /* Espaciado interno */
+    margin-top: 15px; /* Margen superior entre subsecciones */
+    margin-bottom: 15px; /* Margen inferior entre subsecciones */
+    background-color: rgba(248, 249, 250, 0.5); /* Fondo ligeramente diferente */
+}
+
+/* Estilo para los títulos de subsecciones */
+.subsection h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+/* Contenedor de tabla */
+.table-container {
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+/* Estilos para la tabla de componentes */
+.component-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+    background-color: #fff;
+}
+
+.component-table th,
+.component-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.component-table th {
+    background-color: #4472C4;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.component-table td:first-child {
+    font-weight: bold;
+    background-color: #f8f9fa;
+    width: 40%;
+}
+
+.component-table td:nth-child(2),
+.component-table td:nth-child(3) {
+    text-align: center;
+    width: 15%;
+}
+
+.component-table td:last-child {
+    width: 30%;
+}
+
+.component-table input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin: 0;
+    transform: scale(1.2);
+}
+
+.component-table input[type="text"] {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.85em;
+    margin: 0;
+}
+
+/* Estilos para la tabla de mediciones */
+.measurements-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.measurements-table th,
+.measurements-table td {
+    border: 1px solid #000;
+    padding: 6px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.measurements-table th {
+    background-color: #4472C4;
+    color: white;
+    font-weight: bold;
+}
+
+/* Encabezado principal */
+.measurements-table thead tr:first-child th {
+    font-size: 1em;
+    padding: 8px;
+}
+
+/* Subencabezados Balls-OD y Sleeves-ID */
+.measurements-table thead tr:nth-child(2) th {
+    background-color: #5B9BD5;
+    font-size: 0.9em;
+}
+
+/* Columnas Point */
+.measurements-table td:nth-child(1),
+.measurements-table td:nth-child(4),
+.measurements-table th:nth-child(1),
+.measurements-table th:nth-child(4) {
+    width: 8%;
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+/* Columnas de mediciones - proporción igual */
+.measurements-table td:nth-child(2),
+.measurements-table td:nth-child(3),
+.measurements-table td:nth-child(5),
+.measurements-table td:nth-child(6) {
+    width: 15.33%;
+}
+
+.measurements-table input[type="number"] {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.8em;
+    text-align: center;
+    margin: 0;
+}
+
+.measurements-table input[type="text"],
+.measurements-table input[type="date"] {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin: 0;
+}
+
+/* Fila de GAP */
+.gap-row {
+    background-color: #E7F3E7;
+}
+
+.gap-label {
+    font-weight: bold;
+    background-color: #D4E7D4 !important;
+    text-align: center;
+}
+
+.gap-row input[readonly] {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Fila de firma */
+.signature-row {
+    background-color: #F0F0F0;
+}
+
+.signature-label {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 8px;
 }
 
 /* Fila para agrupar campos en una línea horizontal */
@@ -236,6 +417,42 @@ select {
     }
     .form-section {
         padding: 12px;
+    }
+    .subsection {
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .subsection h3 {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+    }
+    .component-table {
+        font-size: 0.8em;
+    }
+    .component-table th,
+    .component-table td {
+        padding: 6px 4px;
+    }
+    .component-table input[type="text"] {
+        font-size: 0.8em;
+        padding: 2px;
+    }
+    .component-table input[type="checkbox"] {
+        transform: scale(1.0);
+    }
+    .measurements-table {
+        font-size: 0.75em;
+    }
+    .measurements-table th,
+    .measurements-table td {
+        padding: 4px 2px;
+    }
+    .measurements-table input[type="number"],
+    .measurements-table input[type="text"],
+    .measurements-table input[type="date"] {
+        font-size: 0.75em;
+        padding: 2px;
     }
     .form-row {
         flex-direction: column;
