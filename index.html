@@ -148,136 +148,415 @@
                         <div class="form-section">
                             <h2>Seccion #3</h2>
                             <div class="subsection">
-                                <h3>Seccion #3.1</h3>
+                                <h3>Seccion #3.1 - Component Inventory & Quality Control</h3>
                                 <div class="table-container">
-                                    <table class="component-table">
+                                    <table class="component-table enhanced">
                                         <thead>
                                             <tr>
-                                                <th>Face 1</th>
+                                                <th rowspan="2">Component</th>
+                                                <th colspan="2">Condition</th>
+                                                <th rowspan="2">Serial Number</th>
+                                                <th rowspan="2">Part Number</th>
+                                                <th rowspan="2">QC Status</th>
+                                                <th rowspan="2">Installation Date</th>
+                                                <th rowspan="2">Actions</th>
+                                            </tr>
+                                            <tr>
                                                 <th>New</th>
                                                 <th>Used</th>
-                                                <th>Serial Number</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Upper Kicker</td>
-                                                <td><input type="checkbox" name="upper-kicker-new" id="upper-kicker-new"></td>
-                                                <td><input type="checkbox" name="upper-kicker-used" id="upper-kicker-used"></td>
-                                                <td><input type="text" name="upper-kicker-sn" id="upper-kicker-sn"></td>
+                                            <tr data-component="upper-kicker">
+                                                <td class="component-name">
+                                                    <i class="fas fa-cog component-icon"></i>
+                                                    Upper Kicker
+                                                </td>
+                                                <td><input type="checkbox" name="upper-kicker-new" id="upper-kicker-new" data-component="upper-kicker" data-condition="new"></td>
+                                                <td><input type="checkbox" name="upper-kicker-used" id="upper-kicker-used" data-component="upper-kicker" data-condition="used"></td>
+                                                <td><input type="text" name="upper-kicker-sn" id="upper-kicker-sn" placeholder="SN-XXXX-XXXX" data-component="upper-kicker"></td>
+                                                <td><input type="text" name="upper-kicker-pn" id="upper-kicker-pn" placeholder="PN-XXXX" data-component="upper-kicker"></td>
+                                                <td><span class="qc-status" id="upper-kicker-status">Pending</span></td>
+                                                <td><input type="date" name="upper-kicker-date" id="upper-kicker-date" data-component="upper-kicker"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('upper-kicker')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('upper-kicker')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Lower Kicker</td>
-                                                <td><input type="checkbox" name="lower-kicker-new" id="lower-kicker-new"></td>
-                                                <td><input type="checkbox" name="lower-kicker-used" id="lower-kicker-used"></td>
-                                                <td><input type="text" name="lower-kicker-sn" id="lower-kicker-sn"></td>
+                                            <tr data-component="lower-kicker">
+                                                <td class="component-name">
+                                                    <i class="fas fa-cog component-icon"></i>
+                                                    Lower Kicker
+                                                </td>
+                                                <td><input type="checkbox" name="lower-kicker-new" id="lower-kicker-new" data-component="lower-kicker" data-condition="new"></td>
+                                                <td><input type="checkbox" name="lower-kicker-used" id="lower-kicker-used" data-component="lower-kicker" data-condition="used"></td>
+                                                <td><input type="text" name="lower-kicker-sn" id="lower-kicker-sn" placeholder="SN-XXXX-XXXX" data-component="lower-kicker"></td>
+                                                <td><input type="text" name="lower-kicker-pn" id="lower-kicker-pn" placeholder="PN-XXXX" data-component="lower-kicker"></td>
+                                                <td><span class="qc-status" id="lower-kicker-status">Pending</span></td>
+                                                <td><input type="date" name="lower-kicker-date" id="lower-kicker-date" data-component="lower-kicker"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('lower-kicker')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('lower-kicker')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Hinge Pin</td>
-                                                <td><input type="checkbox" name="hinge-pin-new" id="hinge-pin-new"></td>
-                                                <td><input type="checkbox" name="hinge-pin-used" id="hinge-pin-used"></td>
-                                                <td><input type="text" name="hinge-pin-sn" id="hinge-pin-sn"></td>
+                                            <tr data-component="hinge-pin">
+                                                <td class="component-name">
+                                                    <i class="fas fa-link component-icon"></i>
+                                                    Hinge Pin
+                                                </td>
+                                                <td><input type="checkbox" name="hinge-pin-new" id="hinge-pin-new" data-component="hinge-pin" data-condition="new"></td>
+                                                <td><input type="checkbox" name="hinge-pin-used" id="hinge-pin-used" data-component="hinge-pin" data-condition="used"></td>
+                                                <td><input type="text" name="hinge-pin-sn" id="hinge-pin-sn" placeholder="SN-XXXX-XXXX" data-component="hinge-pin"></td>
+                                                <td><input type="text" name="hinge-pin-pn" id="hinge-pin-pn" placeholder="PN-XXXX" data-component="hinge-pin"></td>
+                                                <td><span class="qc-status" id="hinge-pin-status">Pending</span></td>
+                                                <td><input type="date" name="hinge-pin-date" id="hinge-pin-date" data-component="hinge-pin"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('hinge-pin')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('hinge-pin')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Pad</td>
-                                                <td><input type="checkbox" name="pad-new" id="pad-new"></td>
-                                                <td><input type="checkbox" name="pad-used" id="pad-used"></td>
-                                                <td><input type="text" name="pad-sn" id="pad-sn"></td>
+                                            <tr data-component="pad">
+                                                <td class="component-name">
+                                                    <i class="fas fa-square component-icon"></i>
+                                                    Pad
+                                                </td>
+                                                <td><input type="checkbox" name="pad-new" id="pad-new" data-component="pad" data-condition="new"></td>
+                                                <td><input type="checkbox" name="pad-used" id="pad-used" data-component="pad" data-condition="used"></td>
+                                                <td><input type="text" name="pad-sn" id="pad-sn" placeholder="SN-XXXX-XXXX" data-component="pad"></td>
+                                                <td><input type="text" name="pad-pn" id="pad-pn" placeholder="PN-XXXX" data-component="pad"></td>
+                                                <td><span class="qc-status" id="pad-status">Pending</span></td>
+                                                <td><input type="date" name="pad-date" id="pad-date" data-component="pad"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('pad')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('pad')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Clamp Plate</td>
-                                                <td><input type="checkbox" name="clamp-plate-new" id="clamp-plate-new"></td>
-                                                <td><input type="checkbox" name="clamp-plate-used" id="clamp-plate-used"></td>
-                                                <td><input type="text" name="clamp-plate-sn" id="clamp-plate-sn"></td>
+                                            <tr data-component="clamp-plate">
+                                                <td class="component-name">
+                                                    <i class="fas fa-grip-horizontal component-icon"></i>
+                                                    Clamp Plate
+                                                </td>
+                                                <td><input type="checkbox" name="clamp-plate-new" id="clamp-plate-new" data-component="clamp-plate" data-condition="new"></td>
+                                                <td><input type="checkbox" name="clamp-plate-used" id="clamp-plate-used" data-component="clamp-plate" data-condition="used"></td>
+                                                <td><input type="text" name="clamp-plate-sn" id="clamp-plate-sn" placeholder="SN-XXXX-XXXX" data-component="clamp-plate"></td>
+                                                <td><input type="text" name="clamp-plate-pn" id="clamp-plate-pn" placeholder="PN-XXXX" data-component="clamp-plate"></td>
+                                                <td><span class="qc-status" id="clamp-plate-status">Pending</span></td>
+                                                <td><input type="date" name="clamp-plate-date" id="clamp-plate-date" data-component="clamp-plate"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('clamp-plate')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('clamp-plate')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Sleeve UH</td>
-                                                <td><input type="checkbox" name="sleeve-uh-new" id="sleeve-uh-new"></td>
-                                                <td><input type="checkbox" name="sleeve-uh-used" id="sleeve-uh-used"></td>
-                                                <td><input type="text" name="sleeve-uh-sn" id="sleeve-uh-sn"></td>
+                                            <tr data-component="sleeve-uh">
+                                                <td class="component-name">
+                                                    <i class="fas fa-circle component-icon"></i>
+                                                    Sleeve UH
+                                                </td>
+                                                <td><input type="checkbox" name="sleeve-uh-new" id="sleeve-uh-new" data-component="sleeve-uh" data-condition="new"></td>
+                                                <td><input type="checkbox" name="sleeve-uh-used" id="sleeve-uh-used" data-component="sleeve-uh" data-condition="used"></td>
+                                                <td><input type="text" name="sleeve-uh-sn" id="sleeve-uh-sn" placeholder="SN-XXXX-XXXX" data-component="sleeve-uh"></td>
+                                                <td><input type="text" name="sleeve-uh-pn" id="sleeve-uh-pn" placeholder="PN-XXXX" data-component="sleeve-uh"></td>
+                                                <td><span class="qc-status" id="sleeve-uh-status">Pending</span></td>
+                                                <td><input type="date" name="sleeve-uh-date" id="sleeve-uh-date" data-component="sleeve-uh"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('sleeve-uh')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('sleeve-uh')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Sleeve DH</td>
-                                                <td><input type="checkbox" name="sleeve-dh-new" id="sleeve-dh-new"></td>
-                                                <td><input type="checkbox" name="sleeve-dh-used" id="sleeve-dh-used"></td>
-                                                <td><input type="text" name="sleeve-dh-sn" id="sleeve-dh-sn"></td>
+                                            <tr data-component="sleeve-dh">
+                                                <td class="component-name">
+                                                    <i class="fas fa-circle component-icon"></i>
+                                                    Sleeve DH
+                                                </td>
+                                                <td><input type="checkbox" name="sleeve-dh-new" id="sleeve-dh-new" data-component="sleeve-dh" data-condition="new"></td>
+                                                <td><input type="checkbox" name="sleeve-dh-used" id="sleeve-dh-used" data-component="sleeve-dh" data-condition="used"></td>
+                                                <td><input type="text" name="sleeve-dh-sn" id="sleeve-dh-sn" placeholder="SN-XXXX-XXXX" data-component="sleeve-dh"></td>
+                                                <td><input type="text" name="sleeve-dh-pn" id="sleeve-dh-pn" placeholder="PN-XXXX" data-component="sleeve-dh"></td>
+                                                <td><span class="qc-status" id="sleeve-dh-status">Pending</span></td>
+                                                <td><input type="date" name="sleeve-dh-date" id="sleeve-dh-date" data-component="sleeve-dh"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('sleeve-dh')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('sleeve-dh')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Ball UH</td>
-                                                <td><input type="checkbox" name="ball-uh-new" id="ball-uh-new"></td>
-                                                <td><input type="checkbox" name="ball-uh-used" id="ball-uh-used"></td>
-                                                <td><input type="text" name="ball-uh-sn" id="ball-uh-sn"></td>
+                                            <tr data-component="ball-uh">
+                                                <td class="component-name">
+                                                    <i class="fas fa-dot-circle component-icon"></i>
+                                                    Ball UH
+                                                </td>
+                                                <td><input type="checkbox" name="ball-uh-new" id="ball-uh-new" data-component="ball-uh" data-condition="new"></td>
+                                                <td><input type="checkbox" name="ball-uh-used" id="ball-uh-used" data-component="ball-uh" data-condition="used"></td>
+                                                <td><input type="text" name="ball-uh-sn" id="ball-uh-sn" placeholder="SN-XXXX-XXXX" data-component="ball-uh"></td>
+                                                <td><input type="text" name="ball-uh-pn" id="ball-uh-pn" placeholder="PN-XXXX" data-component="ball-uh"></td>
+                                                <td><span class="qc-status" id="ball-uh-status">Pending</span></td>
+                                                <td><input type="date" name="ball-uh-date" id="ball-uh-date" data-component="ball-uh"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('ball-uh')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('ball-uh')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
-                                            <tr>
-                                                <td>Ball DH</td>
-                                                <td><input type="checkbox" name="ball-dh-new" id="ball-dh-new"></td>
-                                                <td><input type="checkbox" name="ball-dh-used" id="ball-dh-used"></td>
-                                                <td><input type="text" name="ball-dh-sn" id="ball-dh-sn"></td>
+                                            <tr data-component="ball-dh">
+                                                <td class="component-name">
+                                                    <i class="fas fa-dot-circle component-icon"></i>
+                                                    Ball DH
+                                                </td>
+                                                <td><input type="checkbox" name="ball-dh-new" id="ball-dh-new" data-component="ball-dh" data-condition="new"></td>
+                                                <td><input type="checkbox" name="ball-dh-used" id="ball-dh-used" data-component="ball-dh" data-condition="used"></td>
+                                                <td><input type="text" name="ball-dh-sn" id="ball-dh-sn" placeholder="SN-XXXX-XXXX" data-component="ball-dh"></td>
+                                                <td><input type="text" name="ball-dh-pn" id="ball-dh-pn" placeholder="PN-XXXX" data-component="ball-dh"></td>
+                                                <td><span class="qc-status" id="ball-dh-status">Pending</span></td>
+                                                <td><input type="date" name="ball-dh-date" id="ball-dh-date" data-component="ball-dh"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('ball-dh')" title="Validate Component">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('ball-dh')" title="Clear Data">
+                                                        <i class="fas fa-times"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
                                         </tbody>
+                                        <tfoot>
+                                            <tr class="summary-row">
+                                                <td><strong>Summary</strong></td>
+                                                <td><span id="new-count">0</span></td>
+                                                <td><span id="used-count">0</span></td>
+                                                <td colspan="2"><span id="completion-percentage">0%</span> Complete</td>
+                                                <td><span id="validated-count">0/9</span> Validated</td>
+                                                <td colspan="2">
+                                                    <button type="button" class="action-btn bulk-validate-btn" onclick="bulkValidateAll()" title="Validate All Components">
+                                                        <i class="fas fa-check-double"></i> Validate All
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
                             <div class="subsection">
-                                <h3>Seccion #3.2</h3>
+                                <h3>Seccion #3.2 - Precision Measurements & Statistical Analysis</h3>
+                                <div class="measurement-controls">
+                                    <div class="control-group">
+                                        <label for="tolerance-level">Tolerance Level:</label>
+                                        <select id="tolerance-level" name="tolerance-level">
+                                            <option value="standard">Standard (±0.05mm)</option>
+                                            <option value="tight">Tight (±0.02mm)</option>
+                                            <option value="loose">Loose (±0.10mm)</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <label for="measurement-unit">Unit:</label>
+                                        <select id="measurement-unit" name="measurement-unit">
+                                            <option value="mm">Millimeters (mm)</option>
+                                            <option value="in">Inches (in)</option>
+                                        </select>
+                                    </div>
+                                    <div class="control-group">
+                                        <button type="button" class="action-btn" onclick="calculateStatistics()" title="Calculate Statistics">
+                                            <i class="fas fa-calculator"></i> Calculate Stats
+                                        </button>
+                                        <button type="button" class="action-btn" onclick="exportMeasurements()" title="Export Data">
+                                            <i class="fas fa-download"></i> Export
+                                        </button>
+                                    </div>
+                                </div>
                                 <div class="table-container">
-                                    <table class="measurements-table">
+                                    <table class="measurements-table enhanced">
                                         <thead>
                                             <tr>
-                                                <th colspan="6">Face 1 Balls & Sleeves measurements (mm)</th>
+                                                <th colspan="8">Face 1 Balls & Sleeves measurements (mm) - Advanced Analysis</th>
                                             </tr>
                                             <tr>
-                                                <th colspan="3">Balls- OD</th>
-                                                <th colspan="3">Sleeves- ID</th>
+                                                <th colspan="4">Balls- OD (Outer Diameter)</th>
+                                                <th colspan="4">Sleeves- ID (Inner Diameter)</th>
                                             </tr>
                                             <tr>
                                                 <th>Point</th>
                                                 <th>UH Ball</th>
                                                 <th>DH Ball</th>
+                                                <th>Status</th>
                                                 <th>Point</th>
                                                 <th>UH Sleeve</th>
                                                 <th>DH Sleeve</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><input type="number" step="0.001" name="uh-ball-1" id="uh-ball-1" placeholder="0.000"></td>
-                                                <td><input type="number" step="0.001" name="dh-ball-1" id="dh-ball-1" placeholder="0.000"></td>
-                                                <td>1</td>
-                                                <td><input type="number" step="0.001" name="uh-sleeve-1" id="uh-sleeve-1" placeholder="0.000"></td>
-                                                <td><input type="number" step="0.001" name="dh-sleeve-1" id="dh-sleeve-1" placeholder="0.000"></td>
+                                            <tr data-measurement="1">
+                                                <td class="measurement-point">1</td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="uh-ball-1" id="uh-ball-1" placeholder="0.000" data-type="ball" data-location="uh" data-point="1">
+                                                    <div class="measurement-status" id="uh-ball-1-status"></div>
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="dh-ball-1" id="dh-ball-1" placeholder="0.000" data-type="ball" data-location="dh" data-point="1">
+                                                    <div class="measurement-status" id="dh-ball-1-status"></div>
+                                                </td>
+                                                <td><span class="tolerance-indicator" id="ball-1-tolerance">-</span></td>
+                                                <td class="measurement-point">1</td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="uh-sleeve-1" id="uh-sleeve-1" placeholder="0.000" data-type="sleeve" data-location="uh" data-point="1">
+                                                    <div class="measurement-status" id="uh-sleeve-1-status"></div>
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="dh-sleeve-1" id="dh-sleeve-1" placeholder="0.000" data-type="sleeve" data-location="dh" data-point="1">
+                                                    <div class="measurement-status" id="dh-sleeve-1-status"></div>
+                                                </td>
+                                                <td><span class="tolerance-indicator" id="sleeve-1-tolerance">-</span></td>
                                             </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td><input type="number" step="0.001" name="uh-ball-2" id="uh-ball-2" placeholder="0.000"></td>
-                                                <td><input type="number" step="0.001" name="dh-ball-2" id="dh-ball-2" placeholder="0.000"></td>
-                                                <td>2</td>
-                                                <td><input type="number" step="0.001" name="uh-sleeve-2" id="uh-sleeve-2" placeholder="0.000"></td>
-                                                <td><input type="number" step="0.001" name="dh-sleeve-2" id="dh-sleeve-2" placeholder="0.000"></td>
+                                            <tr data-measurement="2">
+                                                <td class="measurement-point">2</td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="uh-ball-2" id="uh-ball-2" placeholder="0.000" data-type="ball" data-location="uh" data-point="2">
+                                                    <div class="measurement-status" id="uh-ball-2-status"></div>
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="dh-ball-2" id="dh-ball-2" placeholder="0.000" data-type="ball" data-location="dh" data-point="2">
+                                                    <div class="measurement-status" id="dh-ball-2-status"></div>
+                                                </td>
+                                                <td><span class="tolerance-indicator" id="ball-2-tolerance">-</span></td>
+                                                <td class="measurement-point">2</td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="uh-sleeve-2" id="uh-sleeve-2" placeholder="0.000" data-type="sleeve" data-location="uh" data-point="2">
+                                                    <div class="measurement-status" id="uh-sleeve-2-status"></div>
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="dh-sleeve-2" id="dh-sleeve-2" placeholder="0.000" data-type="sleeve" data-location="dh" data-point="2">
+                                                    <div class="measurement-status" id="dh-sleeve-2-status"></div>
+                                                </td>
+                                                <td><span class="tolerance-indicator" id="sleeve-2-tolerance">-</span></td>
                                             </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td><input type="number" step="0.001" name="uh-ball-3" id="uh-ball-3" placeholder="0.000"></td>
-                                                <td><input type="number" step="0.001" name="dh-ball-3" id="dh-ball-3" placeholder="0.000"></td>
-                                                <td>3</td>
-                                                <td><input type="number" step="0.001" name="uh-sleeve-3" id="uh-sleeve-3" placeholder="0.000"></td>
-                                                <td><input type="number" step="0.001" name="dh-sleeve-3" id="dh-sleeve-3" placeholder="0.000"></td>
+                                            <tr data-measurement="3">
+                                                <td class="measurement-point">3</td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="uh-ball-3" id="uh-ball-3" placeholder="0.000" data-type="ball" data-location="uh" data-point="3">
+                                                    <div class="measurement-status" id="uh-ball-3-status"></div>
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="dh-ball-3" id="dh-ball-3" placeholder="0.000" data-type="ball" data-location="dh" data-point="3">
+                                                    <div class="measurement-status" id="dh-ball-3-status"></div>
+                                                </td>
+                                                <td><span class="tolerance-indicator" id="ball-3-tolerance">-</span></td>
+                                                <td class="measurement-point">3</td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="uh-sleeve-3" id="uh-sleeve-3" placeholder="0.000" data-type="sleeve" data-location="uh" data-point="3">
+                                                    <div class="measurement-status" id="uh-sleeve-3-status"></div>
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="dh-sleeve-3" id="dh-sleeve-3" placeholder="0.000" data-type="sleeve" data-location="dh" data-point="3">
+                                                    <div class="measurement-status" id="dh-sleeve-3-status"></div>
+                                                </td>
+                                                <td><span class="tolerance-indicator" id="sleeve-3-tolerance">-</span></td>
                                             </tr>
-                                            <tr class="gap-row">
-                                                <td colspan="2" class="gap-label">UH GAP</td>
-                                                <td><input type="number" step="0.001" name="uh-gap-calc" id="uh-gap-calc" value="0.000" readonly></td>
-                                                <td colspan="2" class="gap-label">DH GAP</td>
-                                                <td><input type="number" step="0.001" name="dh-gap-calc" id="dh-gap-calc" value="0.000" readonly></td>
+                                            <tr class="statistics-row">
+                                                <td><strong>AVG</strong></td>
+                                                <td><span id="uh-ball-avg">-</span></td>
+                                                <td><span id="dh-ball-avg">-</span></td>
+                                                <td><span id="ball-avg-status">-</span></td>
+                                                <td><strong>AVG</strong></td>
+                                                <td><span id="uh-sleeve-avg">-</span></td>
+                                                <td><span id="dh-sleeve-avg">-</span></td>
+                                                <td><span id="sleeve-avg-status">-</span></td>
                                             </tr>
-                                            <tr class="signature-row">
-                                                <td colspan="2" class="signature-label">Measured By:</td>
-                                                <td><input type="text" name="measured-by-32" id="measured-by-32"></td>
-                                                <td colspan="2" class="signature-label">Date:</td>
-                                                <td><input type="date" name="measured-date-32" id="measured-date-32"></td>
+                                            <tr class="statistics-row">
+                                                <td><strong>STD</strong></td>
+                                                <td><span id="uh-ball-std">-</span></td>
+                                                <td><span id="dh-ball-std">-</span></td>
+                                                <td><span id="ball-std-status">-</span></td>
+                                                <td><strong>STD</strong></td>
+                                                <td><span id="uh-sleeve-std">-</span></td>
+                                                <td><span id="dh-sleeve-std">-</span></td>
+                                                <td><span id="sleeve-std-status">-</span></td>
+                                            </tr>
+                                            <tr class="gap-row enhanced">
+                                                <td colspan="2" class="gap-label">
+                                                    <i class="fas fa-arrows-alt-h"></i>
+                                                    UH GAP
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="uh-gap-calc" id="uh-gap-calc" value="0.000" readonly>
+                                                    <div class="gap-quality" id="uh-gap-quality"></div>
+                                                </td>
+                                                <td><span class="gap-status" id="uh-gap-status">Pending</span></td>
+                                                <td colspan="2" class="gap-label">
+                                                    <i class="fas fa-arrows-alt-h"></i>
+                                                    DH GAP
+                                                </td>
+                                                <td>
+                                                    <input type="number" step="0.001" name="dh-gap-calc" id="dh-gap-calc" value="0.000" readonly>
+                                                    <div class="gap-quality" id="dh-gap-quality"></div>
+                                                </td>
+                                                <td><span class="gap-status" id="dh-gap-status">Pending</span></td>
+                                            </tr>
+                                            <tr class="signature-row enhanced">
+                                                <td colspan="2" class="signature-label">
+                                                    <i class="fas fa-user-check"></i>
+                                                    Measured By:
+                                                </td>
+                                                <td><input type="text" name="measured-by-32" id="measured-by-32" placeholder="Technician Name"></td>
+                                                <td><span id="measurement-quality-score">Quality: -</span></td>
+                                                <td colspan="2" class="signature-label">
+                                                    <i class="fas fa-calendar-alt"></i>
+                                                    Date & Time:
+                                                </td>
+                                                <td><input type="datetime-local" name="measured-datetime-32" id="measured-datetime-32"></td>
+                                                <td>
+                                                    <button type="button" class="action-btn finalize-btn" onclick="finalizeMeasurements()" title="Finalize Measurements">
+                                                        <i class="fas fa-lock"></i> Finalize
+                                                    </button>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="measurement-summary">
+                                    <div class="summary-card" id="overall-quality">
+                                        <h4><i class="fas fa-chart-line"></i> Overall Quality</h4>
+                                        <div class="quality-meter">
+                                            <div class="meter-bar" id="quality-bar"></div>
+                                            <span id="quality-percentage">0%</span>
+                                        </div>
+                                    </div>
+                                    <div class="summary-card" id="tolerance-analysis">
+                                        <h4><i class="fas fa-bullseye"></i> Tolerance Analysis</h4>
+                                        <ul id="tolerance-results">
+                                            <li>UH Gap: <span id="uh-gap-tolerance-result">Pending</span></li>
+                                            <li>DH Gap: <span id="dh-gap-tolerance-result">Pending</span></li>
+                                            <li>Repeatability: <span id="repeatability-result">Pending</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -298,6 +577,6 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script_enhanced.js"></script>
 </body>
 </html>

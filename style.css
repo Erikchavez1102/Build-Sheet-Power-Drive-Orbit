@@ -253,10 +253,344 @@ h1 {
     background-color: #F0F0F0;
 }
 
-.signature-label {
+/* Estilos para la tabla de componentes mejorada */
+.component-table.enhanced {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.component-table.enhanced th {
+    background: linear-gradient(135deg, #4472C4, #5B9BD5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.component-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-weight: bold;
-    text-align: right;
-    padding-right: 8px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+}
+
+.component-icon {
+    color: #4472C4;
+    font-size: 1.1em;
+}
+
+.qc-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    min-width: 60px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.qc-status.pending {
+    background-color: #ffc107;
+    color: #856404;
+}
+
+.qc-status.validated {
+    background-color: #28a745;
+    color: white;
+}
+
+.qc-status.failed {
+    background-color: #dc3545;
+    color: white;
+}
+
+.action-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin: 2px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.validate-btn {
+    background: #28a745;
+}
+
+.validate-btn:hover {
+    background: #218838;
+}
+
+.clear-btn {
+    background: #dc3545;
+}
+
+.clear-btn:hover {
+    background: #c82333;
+}
+
+.bulk-validate-btn {
+    background: #17a2b8;
+    padding: 8px 16px;
+}
+
+.bulk-validate-btn:hover {
+    background: #138496;
+}
+
+.summary-row {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    font-weight: bold;
+}
+
+.summary-row td {
+    border-top: 2px solid #4472C4;
+}
+
+/* Estilos para controles de medición */
+.measurement-controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.control-group label {
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #495057;
+}
+
+.control-group select {
+    padding: 4px 8px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+/* Tabla de mediciones mejorada */
+.measurements-table.enhanced {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.measurements-table.enhanced th {
+    background: linear-gradient(135deg, #4472C4, #5B9BD5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.measurement-point {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+}
+
+.measurement-point::before {
+    content: "•";
+    color: #4472C4;
+    font-size: 1.2em;
+    margin-right: 4px;
+}
+
+.measurement-status {
+    height: 3px;
+    margin-top: 2px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.measurement-status.valid {
+    background: #28a745;
+}
+
+.measurement-status.invalid {
+    background: #dc3545;
+}
+
+.measurement-status.warning {
+    background: #ffc107;
+}
+
+.tolerance-indicator {
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tolerance-indicator.in-tolerance {
+    background: #d4edda;
+    color: #155724;
+}
+
+.tolerance-indicator.out-tolerance {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.tolerance-indicator.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.statistics-row {
+    background: linear-gradient(135deg, #e8f4f8, #d1ecf1);
+    font-weight: bold;
+}
+
+.gap-row.enhanced {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+}
+
+.gap-quality {
+    font-size: 0.7em;
+    margin-top: 2px;
+    padding: 1px 4px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.gap-quality.excellent {
+    background: #d4edda;
+    color: #155724;
+}
+
+.gap-quality.good {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.gap-quality.poor {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.gap-status {
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
+.gap-status.optimal {
+    background: #28a745;
+    color: white;
+}
+
+.gap-status.acceptable {
+    background: #ffc107;
+    color: #856404;
+}
+
+.gap-status.critical {
+    background: #dc3545;
+    color: white;
+}
+
+.signature-row.enhanced {
+    background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+}
+
+.finalize-btn {
+    background: #6f42c1;
+    padding: 8px 12px;
+}
+
+.finalize-btn:hover {
+    background: #5a32a3;
+}
+
+/* Resumen de mediciones */
+.measurement-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.summary-card {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h4 {
+    margin: 0 0 12px 0;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quality-meter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.meter-bar {
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.meter-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #dc3545, #ffc107, #28a745);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    width: var(--quality-width, 0%);
+}
+
+#tolerance-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#tolerance-results li {
+    padding: 4px 0;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+}
+
+#tolerance-results li:last-child {
+    border-bottom: none;
 }
 
 /* Fila para agrupar campos en una línea horizontal */
