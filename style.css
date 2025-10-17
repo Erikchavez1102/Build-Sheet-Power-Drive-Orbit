@@ -129,24 +129,38 @@ h1 {
 .component-table td:first-child {
     font-weight: bold;
     background-color: #f8f9fa;
-    width: 40%;
+    width: 25%;
 }
 
 .component-table td:nth-child(2),
 .component-table td:nth-child(3) {
-    text-align: center;
-    width: 15%;
+    text-align: left;
+    width: 6%;
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+
+.component-table td:nth-child(4) {
+    width: 22%;
+}
+
+.component-table td:nth-child(5) {
+    width: 18%;
+}
+
+.component-table td:nth-child(6) {
+    width: 12%;
 }
 
 .component-table td:last-child {
-    width: 30%;
+    width: 11%;
 }
 
 .component-table input[type="checkbox"] {
     width: auto;
     height: auto;
     margin: 0;
-    transform: scale(1.2);
+    transform: scale(0.9);
 }
 
 .component-table input[type="text"] {
@@ -773,7 +787,7 @@ select {
         padding: 2px;
     }
     .component-table input[type="checkbox"] {
-        transform: scale(1.0);
+        transform: scale(0.8);
     }
     .measurements-table {
         font-size: 0.75em;
