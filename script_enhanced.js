@@ -62,6 +62,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
     gapInput.addEventListener('input', validateGap);
     typeBiasUnit.addEventListener('change', validateGap);
 
+    // Event listener para cambio de tipo de Bias Unit - actualizar validaciones de medición
+    const biasUnitTypeSelect = document.getElementById('bias-unit-type');
+    if (biasUnitTypeSelect) {
+        biasUnitTypeSelect.addEventListener('change', function() {
+            // Actualizar información de tolerancias
+            updateToleranceInfo(this.value);
+            
+            // Revalidar todas las mediciones cuando cambie el tipo
+            const measurementFields = [
+                'uh-ball-1', 'uh-ball-2', 'uh-ball-3',
+                'dh-ball-1', 'dh-ball-2', 'dh-ball-3',
+                'uh-sleeve-1', 'uh-sleeve-2', 'uh-sleeve-3',
+                'dh-sleeve-1', 'dh-sleeve-2', 'dh-sleeve-3'
+            ];
+            
+            measurementFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (field && field.value) {
+                    validateMeasurement(fieldId);
+                }
+            });
+            
+            // Recalcular gaps si existen valores
+            calculateAdvancedGaps();
+        });
+    }
+
     // Funcionalidades avanzadas para la Sección 3.1
     const componentRows = [
         'upper-kicker', 'lower-kicker', 'hinge-pin', 'pad', 'clamp-plate',
@@ -336,20 +363,17 @@ function validateMeasurement(fieldId) {
     if (field && statusDiv) {
         const value = parseFloat(field.value);
         const toleranceLevel = document.getElementById('tolerance-level')?.value || 'standard';
+        const biasUnitType = document.getElementById('bias-unit-type')?.value;
         
         let tolerance = 0.05; // standard
         if (toleranceLevel === 'tight') tolerance = 0.02;
         if (toleranceLevel === 'loose') tolerance = 0.10;
         
-        // Definir rangos esperados basados en especificaciones PDORB6
+        // Definir rangos esperados basados en el tipo de Bias Unit seleccionado
         let expectedMin, expectedMax;
-        if (fieldId.includes('ball')) {
-            expectedMin = 46.71;
-            expectedMax = 47.004;
-        } else if (fieldId.includes('sleeve')) {
-            expectedMin = 46.91;
-            expectedMax = 47.204;
-        }
+        const toleranceSpecs = getToleranceSpecs(biasUnitType, fieldId);
+        expectedMin = toleranceSpecs.min;
+        expectedMax = toleranceSpecs.max;
         
         if (value && expectedMin && expectedMax) {
             if (value >= expectedMin && value <= expectedMax) {
@@ -369,6 +393,84 @@ function validateMeasurement(fieldId) {
     }
 }
 
+// Función para obtener especificaciones de tolerancia según el tipo de Bias Unit
+function getToleranceSpecs(biasUnitType, fieldId) {
+    // Configuración de tolerancias por tipo de Bias Unit
+    const toleranceConfig = {
+        'PDORB6': {
+            ball: { min: 46.71, max: 47.004 },
+            sleeve: { min: 46.91, max: 47.204 },
+            gap: { min: 0.02, max: 0.1 }
+        },
+        // Placeholder para otros tipos que se agregarán posteriormente
+        'PDORB4': {
+            ball: { min: 0, max: 0 },    // Pendiente definir
+            sleeve: { min: 0, max: 0 },  // Pendiente definir
+            gap: { min: 0, max: 0 }      // Pendiente definir
+        },
+        'PDORB8': {
+            ball: { min: 0, max: 0 },    // Pendiente definir
+            sleeve: { min: 0, max: 0 },  // Pendiente definir
+            gap: { min: 0, max: 0 }      // Pendiente definir
+        },
+        'PDORB12': {
+            ball: { min: 0, max: 0 },    // Pendiente definir
+            sleeve: { min: 0, max: 0 },  // Pendiente definir
+            gap: { min: 0, max: 0 }      // Pendiente definir
+        }
+    };
+    
+    // Valores por defecto si no se ha seleccionado un tipo
+    const defaultSpecs = { min: 0, max: 0 };
+    
+    if (!biasUnitType || !toleranceConfig[biasUnitType]) {
+        return defaultSpecs;
+    }
+    
+    const config = toleranceConfig[biasUnitType];
+    
+    // Determinar el tipo de medición basado en el fieldId
+    if (fieldId.includes('ball')) {
+        return config.ball;
+    } else if (fieldId.includes('sleeve')) {
+        return config.sleeve;
+    } else if (fieldId.includes('gap')) {
+        return config.gap;
+    }
+    
+    return defaultSpecs;
+}
+
+// Función para actualizar la información de tolerancias en la UI
+function updateToleranceInfo(biasUnitType) {
+    const toleranceTextEl = document.getElementById('active-tolerances-text');
+    
+    if (!toleranceTextEl) return;
+    
+    if (!biasUnitType) {
+        toleranceTextEl.textContent = 'Select a Bias Unit Type to see tolerances';
+        return;
+    }
+    
+    const ballSpecs = getToleranceSpecs(biasUnitType, 'ball');
+    const sleeveSpecs = getToleranceSpecs(biasUnitType, 'sleeve');
+    const gapSpecs = getToleranceSpecs(biasUnitType, 'gap');
+    
+    if (ballSpecs.min > 0 && ballSpecs.max > 0) {
+        toleranceTextEl.innerHTML = `
+            <strong>${biasUnitType}</strong> - 
+            Ball: ${ballSpecs.min}mm-${ballSpecs.max}mm | 
+            Sleeve: ${sleeveSpecs.min}mm-${sleeveSpecs.max}mm | 
+            Gap: ${gapSpecs.min}mm-${gapSpecs.max}mm
+        `;
+    } else {
+        toleranceTextEl.innerHTML = `
+            <strong>${biasUnitType}</strong> - 
+            <em>Tolerances not yet defined (pending specification)</em>
+        `;
+    }
+}
+
 function calculateAdvancedGaps() {
     calculateGaps(); // Función original
     
@@ -383,26 +485,44 @@ function calculateAdvancedGaps() {
 function updateGapQuality(location, gap) {
     const qualityDiv = document.getElementById(`${location}-gap-quality`);
     const statusSpan = document.getElementById(`${location}-gap-status`);
+    const biasUnitType = document.getElementById('bias-unit-type')?.value;
     
     if (qualityDiv && statusSpan) {
-        // Rangos de calidad para PDORB6 (0.02-0.1mm)
-        if (gap >= 0.02 && gap <= 0.1) {
-            if (gap >= 0.04 && gap <= 0.08) {
-                qualityDiv.textContent = 'Excellent';
-                qualityDiv.className = 'gap-quality excellent';
-                statusSpan.textContent = 'Optimal';
-                statusSpan.className = 'gap-status optimal';
+        // Obtener especificaciones de gap para el tipo seleccionado
+        const gapSpecs = getToleranceSpecs(biasUnitType, 'gap');
+        const minGap = gapSpecs.min;
+        const maxGap = gapSpecs.max;
+        
+        // Solo procesar si hay especificaciones válidas definidas
+        if (minGap > 0 && maxGap > 0) {
+            // Rangos de calidad basados en las especificaciones del tipo seleccionado
+            if (gap >= minGap && gap <= maxGap) {
+                const optimalMin = minGap + (maxGap - minGap) * 0.25; // 25% del rango
+                const optimalMax = minGap + (maxGap - minGap) * 0.75; // 75% del rango
+                
+                if (gap >= optimalMin && gap <= optimalMax) {
+                    qualityDiv.textContent = 'Excellent';
+                    qualityDiv.className = 'gap-quality excellent';
+                    statusSpan.textContent = 'Optimal';
+                    statusSpan.className = 'gap-status optimal';
+                } else {
+                    qualityDiv.textContent = 'Good';
+                    qualityDiv.className = 'gap-quality good';
+                    statusSpan.textContent = 'Acceptable';
+                    statusSpan.className = 'gap-status acceptable';
+                }
             } else {
-                qualityDiv.textContent = 'Good';
-                qualityDiv.className = 'gap-quality good';
-                statusSpan.textContent = 'Acceptable';
-                statusSpan.className = 'gap-status acceptable';
+                qualityDiv.textContent = 'Poor';
+                qualityDiv.className = 'gap-quality poor';
+                statusSpan.textContent = 'Critical';
+                statusSpan.className = 'gap-status critical';
             }
         } else {
-            qualityDiv.textContent = 'Poor';
-            qualityDiv.className = 'gap-quality poor';
-            statusSpan.textContent = 'Critical';
-            statusSpan.className = 'gap-status critical';
+            // Sin especificaciones válidas - mostrar información genérica
+            qualityDiv.textContent = 'N/A';
+            qualityDiv.className = 'gap-quality';
+            statusSpan.textContent = 'Select Bias Unit Type';
+            statusSpan.className = 'gap-status';
         }
     }
 }
