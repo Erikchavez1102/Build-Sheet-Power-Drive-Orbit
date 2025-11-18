@@ -556,6 +556,47 @@ h1 {
     border-bottom: none;
 }
 
+/* Estilos para resultados de tolerancia en Tolerance Analysis */
+.tolerance-optimal {
+    background: #28a745;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.tolerance-acceptable {
+    background: #ffc107;
+    color: #856404;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.tolerance-critical {
+    background: #dc3545;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.tolerance-no-spec {
+    background: #6c757d;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
 /* Fila para agrupar campos en una línea horizontal */
 .form-row {
     display: flex; /* Permite que los elementos se coloquen en una fila */

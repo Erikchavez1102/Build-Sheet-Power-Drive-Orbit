@@ -86,6 +86,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
             
             // Recalcular gaps si existen valores
             calculateAdvancedGaps();
+            
+            // Actualizar Tolerance Analysis con valores existentes
+            const uhGap = parseFloat(document.getElementById('uh-gap-calc')?.value || 0);
+            const dhGap = parseFloat(document.getElementById('dh-gap-calc')?.value || 0);
+            if (uhGap > 0) updateToleranceAnalysis('uh', uhGap);
+            if (dhGap > 0) updateToleranceAnalysis('dh', dhGap);
         });
     }
 
@@ -202,6 +208,9 @@ function calculateGaps() {
         const uhSleeveAvg = uhSleevesValid.reduce((a, b) => a + b) / uhSleevesValid.length;
         const uhGap = uhSleeveAvg - uhBallAvg;
         document.getElementById('uh-gap-calc').value = uhGap.toFixed(3);
+        
+        // Actualizar Tolerance Analysis
+        updateToleranceAnalysis('uh', uhGap);
     }
 
     if (dhBallsValid.length > 0 && dhSleevesValid.length > 0) {
@@ -209,6 +218,54 @@ function calculateGaps() {
         const dhSleeveAvg = dhSleevesValid.reduce((a, b) => a + b) / dhSleevesValid.length;
         const dhGap = dhSleeveAvg - dhBallAvg;
         document.getElementById('dh-gap-calc').value = dhGap.toFixed(3);
+        
+        // Actualizar Tolerance Analysis
+        updateToleranceAnalysis('dh', dhGap);
+    }
+}
+
+// Función para actualizar la sección Tolerance Analysis
+function updateToleranceAnalysis(location, gapValue) {
+    const biasUnitType = document.getElementById('bias-unit-type')?.value;
+    const toleranceResultElement = document.getElementById(`${location}-gap-tolerance-result`);
+    
+    if (!toleranceResultElement) return;
+    
+    // Obtener especificaciones de gap para el tipo seleccionado
+    const gapSpecs = getToleranceSpecs(biasUnitType, 'gap');
+    const minGap = gapSpecs.min;
+    const maxGap = gapSpecs.max;
+    
+    if (minGap > 0 && maxGap > 0) {
+        // Formatear el valor con evaluación de tolerancia
+        let statusClass = '';
+        let statusText = '';
+        
+        if (gapValue >= minGap && gapValue <= maxGap) {
+            const optimalMin = minGap + (maxGap - minGap) * 0.25;
+            const optimalMax = minGap + (maxGap - minGap) * 0.75;
+            
+            if (gapValue >= optimalMin && gapValue <= optimalMax) {
+                statusClass = 'tolerance-optimal';
+                statusText = 'Optimal';
+            } else {
+                statusClass = 'tolerance-acceptable';
+                statusText = 'Acceptable';
+            }
+        } else {
+            statusClass = 'tolerance-critical';
+            statusText = 'Critical';
+        }
+        
+        toleranceResultElement.innerHTML = `
+            <strong>${gapValue.toFixed(3)}mm</strong> 
+            <span class="${statusClass}">${statusText}</span>
+        `;
+    } else {
+        toleranceResultElement.innerHTML = `
+            <strong>${gapValue.toFixed(3)}mm</strong> 
+            <span class="tolerance-no-spec">No Spec</span>
+        `;
     }
 }
 
@@ -549,6 +606,9 @@ function calculateStatistics() {
             if (stdElement) stdElement.textContent = std.toFixed(3);
         }
     });
+    
+    // Actualizar gaps y Tolerance Analysis después del cálculo
+    calculateAdvancedGaps();
 }
 
 function updateQualityScore() {
