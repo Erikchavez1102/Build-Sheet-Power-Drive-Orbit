@@ -149,20 +149,18 @@
                             <h2>Seccion #3</h2>
                             <div class="subsection">
                                 <h3>Seccion #3.1 - Component Inventory & Quality Control</h3>
-                                <div class="table-container">
+                                <div class="table-wrapper">
                                     <table class="component-table enhanced">
                                         <thead>
                                             <tr>
-                                                <th rowspan="2" style="width: 25%;">Component</th>
-                                                <th colspan="2" style="text-align: center; width: 12%;">Condition</th>
-                                                <th rowspan="2" style="width: 22%;">Serial Number</th>
-                                                <th rowspan="2" style="width: 18%;">Part Number</th>
-                                                <th rowspan="2" style="width: 12%;">QC Status</th>
-                                                <th rowspan="2" style="width: 11%;">Actions</th>
+                                                <th rowspan="2" style="width: 35%;">Component</th>
+                                                <th colspan="2" style="text-align: center; width: 15%;">Condition</th>
+                                                <th rowspan="2" style="width: 25%;">Serial Number</th>
+                                                <th rowspan="2" style="width: 25%;">Part Number</th>
                                             </tr>
                                             <tr>
-                                                <th style="width: 6%; font-size: 0.8em; padding: 4px;">New</th>
-                                                <th style="width: 6%; font-size: 0.8em; padding: 4px;">Used</th>
+                                                <th style="width: 7.5%; font-size: 0.8em; padding: 4px;">New</th>
+                                                <th style="width: 7.5%; font-size: 0.8em; padding: 4px;">Used</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -175,15 +173,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="upper-kicker-used" id="upper-kicker-used" data-component="upper-kicker" data-condition="used"></td>
                                                 <td><input type="text" name="upper-kicker-sn" id="upper-kicker-sn" placeholder="SN-XXXX-XXXX" data-component="upper-kicker"></td>
                                                 <td><input type="text" name="upper-kicker-pn" id="upper-kicker-pn" placeholder="PN-XXXX" data-component="upper-kicker"></td>
-                                                <td><span class="qc-status" id="upper-kicker-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('upper-kicker')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('upper-kicker')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                             <tr data-component="lower-kicker">
                                                 <td class="component-name">
@@ -194,15 +183,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="lower-kicker-used" id="lower-kicker-used" data-component="lower-kicker" data-condition="used"></td>
                                                 <td><input type="text" name="lower-kicker-sn" id="lower-kicker-sn" placeholder="SN-XXXX-XXXX" data-component="lower-kicker"></td>
                                                 <td><input type="text" name="lower-kicker-pn" id="lower-kicker-pn" placeholder="PN-XXXX" data-component="lower-kicker"></td>
-                                                <td><span class="qc-status" id="lower-kicker-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('lower-kicker')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('lower-kicker')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                             <tr data-component="hinge-pin">
                                                 <td class="component-name">
@@ -213,15 +193,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="hinge-pin-used" id="hinge-pin-used" data-component="hinge-pin" data-condition="used"></td>
                                                 <td><input type="text" name="hinge-pin-sn" id="hinge-pin-sn" placeholder="SN-XXXX-XXXX" data-component="hinge-pin"></td>
                                                 <td><input type="text" name="hinge-pin-pn" id="hinge-pin-pn" placeholder="PN-XXXX" data-component="hinge-pin"></td>
-                                                <td><span class="qc-status" id="hinge-pin-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('hinge-pin')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('hinge-pin')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                             <tr data-component="pad">
                                                 <td class="component-name">
@@ -232,15 +203,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="pad-used" id="pad-used" data-component="pad" data-condition="used"></td>
                                                 <td><input type="text" name="pad-sn" id="pad-sn" placeholder="SN-XXXX-XXXX" data-component="pad"></td>
                                                 <td><input type="text" name="pad-pn" id="pad-pn" placeholder="PN-XXXX" data-component="pad"></td>
-                                                <td><span class="qc-status" id="pad-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('pad')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('pad')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                             <tr data-component="clamp-plate">
                                                 <td class="component-name">
@@ -251,15 +213,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="clamp-plate-used" id="clamp-plate-used" data-component="clamp-plate" data-condition="used"></td>
                                                 <td><input type="text" name="clamp-plate-sn" id="clamp-plate-sn" placeholder="SN-XXXX-XXXX" data-component="clamp-plate"></td>
                                                 <td><input type="text" name="clamp-plate-pn" id="clamp-plate-pn" placeholder="PN-XXXX" data-component="clamp-plate"></td>
-                                                <td><span class="qc-status" id="clamp-plate-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('clamp-plate')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('clamp-plate')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                             <tr data-component="sleeve-uh">
                                                 <td class="component-name">
@@ -270,15 +223,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="sleeve-uh-used" id="sleeve-uh-used" data-component="sleeve-uh" data-condition="used"></td>
                                                 <td><input type="text" name="sleeve-uh-sn" id="sleeve-uh-sn" placeholder="SN-XXXX-XXXX" data-component="sleeve-uh"></td>
                                                 <td><input type="text" name="sleeve-uh-pn" id="sleeve-uh-pn" placeholder="PN-XXXX" data-component="sleeve-uh"></td>
-                                                <td><span class="qc-status" id="sleeve-uh-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('sleeve-uh')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('sleeve-uh')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                             <tr data-component="sleeve-dh">
                                                 <td class="component-name">
@@ -289,15 +233,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="sleeve-dh-used" id="sleeve-dh-used" data-component="sleeve-dh" data-condition="used"></td>
                                                 <td><input type="text" name="sleeve-dh-sn" id="sleeve-dh-sn" placeholder="SN-XXXX-XXXX" data-component="sleeve-dh"></td>
                                                 <td><input type="text" name="sleeve-dh-pn" id="sleeve-dh-pn" placeholder="PN-XXXX" data-component="sleeve-dh"></td>
-                                                <td><span class="qc-status" id="sleeve-dh-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('sleeve-dh')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('sleeve-dh')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                             <tr data-component="ball-uh">
                                                 <td class="component-name">
@@ -308,15 +243,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="ball-uh-used" id="ball-uh-used" data-component="ball-uh" data-condition="used"></td>
                                                 <td><input type="text" name="ball-uh-sn" id="ball-uh-sn" placeholder="SN-XXXX-XXXX" data-component="ball-uh"></td>
                                                 <td><input type="text" name="ball-uh-pn" id="ball-uh-pn" placeholder="PN-XXXX" data-component="ball-uh"></td>
-                                                <td><span class="qc-status" id="ball-uh-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('ball-uh')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('ball-uh')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                             <tr data-component="ball-dh">
                                                 <td class="component-name">
@@ -327,15 +253,6 @@
                                                 <td style="padding: 4px 6px;"><input type="checkbox" name="ball-dh-used" id="ball-dh-used" data-component="ball-dh" data-condition="used"></td>
                                                 <td><input type="text" name="ball-dh-sn" id="ball-dh-sn" placeholder="SN-XXXX-XXXX" data-component="ball-dh"></td>
                                                 <td><input type="text" name="ball-dh-pn" id="ball-dh-pn" placeholder="PN-XXXX" data-component="ball-dh"></td>
-                                                <td><span class="qc-status" id="ball-dh-status">Pending</span></td>
-                                                <td>
-                                                    <button type="button" class="action-btn validate-btn" onclick="validateComponent('ball-dh')" title="Validate Component">
-                                                        <i class="fas fa-check"></i>
-                                                    </button>
-                                                    <button type="button" class="action-btn clear-btn" onclick="clearComponent('ball-dh')" title="Clear Data">
-                                                        <i class="fas fa-times"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                         </tbody>
                                         <tfoot>
@@ -344,12 +261,6 @@
                                                 <td><span id="new-count">0</span></td>
                                                 <td><span id="used-count">0</span></td>
                                                 <td colspan="2"><span id="completion-percentage">0%</span> Complete</td>
-                                                <td><span id="validated-count">0/9</span> Validated</td>
-                                                <td colspan="2">
-                                                    <button type="button" class="action-btn bulk-validate-btn" onclick="bulkValidateAll()" title="Validate All Components">
-                                                        <i class="fas fa-check-double"></i> Validate All
-                                                    </button>
-                                                </td>
                                             </tr>
                                         </tfoot>
                                     </table>

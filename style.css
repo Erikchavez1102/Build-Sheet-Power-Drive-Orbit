@@ -97,18 +97,33 @@ h1 {
     font-weight: bold;
 }
 
-/* Contenedor de tabla */
-.table-container {
+/* Contenedor de tabla mejorado para ocupar 100% */
+.table-wrapper {
+    width: 100%;
+    margin: 15px 0;
+    padding: 0;
     overflow-x: auto;
-    margin-top: 15px;
+    box-sizing: border-box;
+}
+
+/* Contenedor de tabla DEPRECATED - usar .table-wrapper */
+.table-container {
+    width: 100%;
+    margin: 15px 0;
+    padding: 0;
+    overflow-x: auto;
+    box-sizing: border-box;
 }
 
 /* Estilos para la tabla de componentes */
 .component-table {
     width: 100%;
+    table-layout: fixed;
     border-collapse: collapse;
     font-size: 0.9em;
     background-color: #fff;
+    min-width: 0;
+    margin: 0;
 }
 
 .component-table th,
@@ -135,25 +150,17 @@ h1 {
 .component-table td:nth-child(2),
 .component-table td:nth-child(3) {
     text-align: left;
-    width: 6%;
+    width: 7.5%;
     padding: 4px 6px;
     vertical-align: middle;
 }
 
 .component-table td:nth-child(4) {
-    width: 22%;
+    width: 25%;
 }
 
 .component-table td:nth-child(5) {
-    width: 18%;
-}
-
-.component-table td:nth-child(6) {
-    width: 12%;
-}
-
-.component-table td:last-child {
-    width: 11%;
+    width: 25%;
 }
 
 .component-table input[type="checkbox"] {
@@ -280,7 +287,6 @@ h1 {
 }
 
 .component-name {
-    display: flex;
     align-items: center;
     gap: 8px;
     font-weight: bold;
@@ -290,78 +296,6 @@ h1 {
 .component-icon {
     color: #4472C4;
     font-size: 1.1em;
-}
-
-.qc-status {
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.8em;
-    font-weight: bold;
-    text-transform: uppercase;
-    display: inline-block;
-    min-width: 60px;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.qc-status.pending {
-    background-color: #ffc107;
-    color: #856404;
-}
-
-.qc-status.validated {
-    background-color: #28a745;
-    color: white;
-}
-
-.qc-status.failed {
-    background-color: #dc3545;
-    color: white;
-}
-
-.action-btn {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 6px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8em;
-    margin: 2px;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.action-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
-}
-
-.validate-btn {
-    background: #28a745;
-}
-
-.validate-btn:hover {
-    background: #218838;
-}
-
-.clear-btn {
-    background: #dc3545;
-}
-
-.clear-btn:hover {
-    background: #c82333;
-}
-
-.bulk-validate-btn {
-    background: #17a2b8;
-    padding: 8px 16px;
-}
-
-.bulk-validate-btn:hover {
-    background: #138496;
 }
 
 .summary-row {

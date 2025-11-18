@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         'sleeve-uh', 'sleeve-dh', 'ball-uh', 'ball-dh'
     ];
 
-    // Inicializar estados QC
+    // Inicializar estados QC - DISABLED: QC columns removed
     componentRows.forEach(component => {
-        updateQCStatus(component, 'pending');
+        // updateQCStatus(component, 'pending');
     });
 
     // Event listeners mejorados para checkboxes
@@ -186,13 +186,14 @@ function calculateGaps() {
 }
 
 // Funciones para la Sección 3.1
-function updateQCStatus(component, status) {
-    const statusElement = document.getElementById(`${component}-status`);
-    if (statusElement) {
-        statusElement.textContent = status.charAt(0).toUpperCase() + status.slice(1);
-        statusElement.className = `qc-status ${status}`;
-    }
-}
+// DEPRECATED: Function removed as QC status elements were eliminated
+// function updateQCStatus(component, status) {
+//     const statusElement = document.getElementById(`${component}-status`);
+//     if (statusElement) {
+//         statusElement.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+//         statusElement.className = `qc-status ${status}`;
+//     }
+// }
 
 function validateComponent(component) {
     const newChecked = document.getElementById(`${component}-new`)?.checked;
@@ -202,10 +203,10 @@ function validateComponent(component) {
     const installDate = document.getElementById(`${component}-date`)?.value;
 
     if ((newChecked || usedChecked) && serialNumber && partNumber) {
-        updateQCStatus(component, 'validated');
+        // updateQCStatus(component, 'validated'); // DISABLED: QC columns removed
         showNotification(`${component} validated successfully!`, 'success');
     } else {
-        updateQCStatus(component, 'failed');
+        // updateQCStatus(component, 'failed'); // DISABLED: QC columns removed
         showNotification(`${component} validation failed. Check all fields.`, 'error');
     }
     
@@ -223,34 +224,35 @@ function clearComponent(component) {
         if (input) input.value = '';
     });
     
-    updateQCStatus(component, 'pending');
+    // updateQCStatus(component, 'pending'); // DISABLED: QC columns removed
     updateSummaryCounters();
     showNotification(`${component} data cleared.`, 'info');
 }
 
-function bulkValidateAll() {
-    const componentRows = [
-        'upper-kicker', 'lower-kicker', 'hinge-pin', 'pad', 'clamp-plate',
-        'sleeve-uh', 'sleeve-dh', 'ball-uh', 'ball-dh'
-    ];
-    
-    let validated = 0;
-    componentRows.forEach(component => {
-        const newChecked = document.getElementById(`${component}-new`)?.checked;
-        const usedChecked = document.getElementById(`${component}-used`)?.checked;
-        const serialNumber = document.getElementById(`${component}-sn`)?.value;
-        
-        if ((newChecked || usedChecked) && serialNumber) {
-            updateQCStatus(component, 'validated');
-            validated++;
-        } else {
-            updateQCStatus(component, 'failed');
-        }
-    });
-    
-    showNotification(`Bulk validation complete: ${validated}/${componentRows.length} components validated.`, 'info');
-    updateSummaryCounters();
-}
+// DEPRECATED: Function removed as QC validation columns were eliminated
+// function bulkValidateAll() {
+//     const componentRows = [
+//         'upper-kicker', 'lower-kicker', 'hinge-pin', 'pad', 'clamp-plate',
+//         'sleeve-uh', 'sleeve-dh', 'ball-uh', 'ball-dh'
+//     ];
+//     
+//     let validated = 0;
+//     componentRows.forEach(component => {
+//         const newChecked = document.getElementById(`${component}-new`)?.checked;
+//         const usedChecked = document.getElementById(`${component}-used`)?.checked;
+//         const serialNumber = document.getElementById(`${component}-sn`)?.value;
+//         
+//         if ((newChecked || usedChecked) && serialNumber) {
+//             updateQCStatus(component, 'validated');
+//             validated++;
+//         } else {
+//             updateQCStatus(component, 'failed');
+//         }
+//     });
+//     
+//     showNotification(`Bulk validation complete: ${validated}/${componentRows.length} components validated.`, 'info');
+//     updateSummaryCounters();
+// }
 
 function updateComponentRow(component) {
     // Auto-llenar fecha si no está establecida
@@ -300,7 +302,6 @@ function updateSummaryCounters() {
     
     let newCount = 0;
     let usedCount = 0;
-    let validatedCount = 0;
     let totalFields = 0;
     let completedFields = 0;
     
@@ -308,11 +309,8 @@ function updateSummaryCounters() {
         if (document.getElementById(`${component}-new`)?.checked) newCount++;
         if (document.getElementById(`${component}-used`)?.checked) usedCount++;
         
-        const status = document.getElementById(`${component}-status`)?.textContent;
-        if (status === 'Validated') validatedCount++;
-        
-        // Contar campos completados
-        ['new', 'used', 'sn', 'pn', 'date'].forEach(field => {
+        // Contar campos completados (solo checkbox y text inputs que existen)
+        ['new', 'used', 'sn', 'pn'].forEach(field => {
             totalFields++;
             const element = document.getElementById(`${component}-${field}`);
             if (element && (element.checked || element.value)) completedFields++;
@@ -321,12 +319,10 @@ function updateSummaryCounters() {
     
     const newCountEl = document.getElementById('new-count');
     const usedCountEl = document.getElementById('used-count');
-    const validatedCountEl = document.getElementById('validated-count');
     const completionPercentageEl = document.getElementById('completion-percentage');
     
     if (newCountEl) newCountEl.textContent = newCount;
     if (usedCountEl) usedCountEl.textContent = usedCount;
-    if (validatedCountEl) validatedCountEl.textContent = `${validatedCount}/${componentRows.length}`;
     
     const completionPercentage = Math.round((completedFields / totalFields) * 100);
     if (completionPercentageEl) completionPercentageEl.textContent = `${completionPercentage}%`;
