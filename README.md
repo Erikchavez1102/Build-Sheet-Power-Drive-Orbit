@@ -22,3 +22,8 @@
 - **Yellow (Warning)**: Measurement within acceptable tolerance buffer
 - **Red (Invalid)**: Measurement outside acceptable range
 - **Gap Assessment**: Optimal/Acceptable/Critical status based on radial gap calculations
+
+- PDORB4 Specifications (Implemented)
+Ball Measurement: MIN: 34.71mm TO MAX: 35.004mm
+Sleeve Measurement: MIN: 34.91mm TO MAX: 35.204mm
+Downhole Ball/Sleeve Radial Gap: MIN: 0.02mm TO MAX: 0.1mm
